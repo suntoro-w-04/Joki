@@ -1,125 +1,34 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Sidebar</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #35424a;
-            color: white;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: width 0.3s;
-            position: relative;
-        }
-        .sidebar img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .sidebar h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .sidebar a:hover {
-            background-color: #575757;
-        }
-        .content {
-            flex: 1;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .resizer {
-            width: 5px;
-            background: #ccc;
-            cursor: ew-resize;
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <img src="logo.png" alt="Logo"> <!-- Ganti dengan URL logo Anda -->
-        <h2>Nama Website</h2>
-        <a href="#" onclick="showContent('joki')">Joki</a>
-        <a href="#" onclick="showContent('tentang')">Tentang Kami</a>
-        <a href="#" onclick="showContent('lainnya')">Lainnya</a>
-        <div class="resizer" id="resizer"></div>
-    </div>
-    <div class="content">
-        <div id="joki" class="hidden">
-            <h2>Joki</h2>
-            <p>Ini adalah informasi tentang joki.</p>
-        </div>
-        <div id="tentang" class="hidden">
-            <h2>Tentang Kami</h2>
-            <p>Ini adalah informasi tentang kami.</p>
-        </div>
-        <div id="lainnya" class="hidden">
-            <h2>Lainnya</h2>
-            <p>Ini adalah informasi lainnya.</p>
-        </div>
-    </div>
+import streamlit as st
+import pandas as pd
 
-    <script>
-        function showContent(menu) {
-            // Sembunyikan semua konten
-            const contents = document.querySelectorAll('.content > div');
-            contents.forEach(content => {
-                content.classList.add('hidden');
-            });
+st.set_page_config(
+    page_title="Dashboard",
+    page_icon="👋",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
-            // Tampilkan konten yang dipilih
-            const selectedContent = document.getElementById(menu);
-            if (selectedContent) {
-                selectedContent.classList.remove('hidden');
-            }
-        }
 
-        // Resizer functionality
-        const resizer = document.getElementById('resizer');
-        const sidebar = document.querySelector('.sidebar');
-        let isResizing = false;
+st.title("Selamat Datang")
 
-        resizer.addEventListener('mousedown', (event) => {
-            isResizing = true;
-        });
+st.sidebar.markdown("# SKRIPSI UNNES")
 
-        document.addEventListener('mousemove', (event) => {
-            if (isResizing) {
-                const newWidth = event.clientX;
-                if (newWidth > 100 && newWidth < 500) { // batas lebar sidebar
-                    sidebar.style.width = newWidth + 'px';
-                }
-            }
-        });
+# Sidebar menu
+option = st.sidebar.selectbox("Main Menu", ("Dashboard", "Dataset", "Mining", "Tentang Saya"))
 
-        document.addEventListener('mouseup', () => {
-            isResizing = false;
-        });
-    </script>
-</body>
-</html>
+if option == "Dashboard":
+    st.subheader("Dashboard")
+    st.write("This is the dashboard page.")
+elif option == "Dataset":
+    st.subheader("Upload Dataset")
+
+    uploaded_file = st.file_uploader("Upload File CSV", type=["csv"])
+    if uploaded_file is not None:
+        data = pd.read_csv(uploaded_file)
+        st.write(data)
+elif option == "Mining":
+    st.subheader("Mining")
+    st.write("This is the mining page.")
+elif option == "Tentang Saya":
+    st.subheader("Tentang Saya")
+    st.write("This is the about page.")
