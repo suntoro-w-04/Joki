@@ -1,62 +1,73 @@
-import streamlit as st
-from base64 import b64encode
-import pandas as pd
-import numpy as np
-import base64
-from PIL import Image
-import matplotlib.pyplot as plt
-from NB2 import Akurasi_NB
-from IGNB import Akurasi_IGNB
-from AGNB2 import accuracy_AGNB
-from IGAGNB2 import accuracy_IGAGNB
-from sklearn.naive_bayes import GaussianNB
-from sklearn.feature_selection import mutual_info_classif, SelectKBest
-from sklearn_genetic import GAFeatureSelectionCV
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                <span>TokoKu</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#"><i class="fas fa-box-open"></i> Produk</a></li>
+                    <li><a href="#"><i class="fas fa-history"></i> Riwayat</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Pengaturan</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-# Mengatur mode Wide
-st.set_page_config(layout="wide")
+        <!-- Konten Utama -->
+        <main class="content">
+            <h1>Daftar Produk</h1>
+            <div class="products">
+                <!-- Produk 1 -->
+                <div class="product-card">
+                    <img src="images/produk1.jpg" alt="Sepatu Sport">
+                    <h3>Sepatu Sport X1</h3>
+                    <p class="price">Rp 450.000</p>
+                    <p class="desc">Sepatu nyaman untuk lari sehari-hari, tersedia ukuran 38-44.</p>
+                    <button class="buy-btn">Beli Sekarang</button>
+                </div>
 
-# Membuat kontainer untuk gambar
-container = st.container()
+                <!-- Produk 2 -->
+                <div class="product-card">
+                    <img src="images/produk2.jpg" alt="Tas Laptop">
+                    <h3>Tas Laptop Premium</h3>
+                    <p class="price">Rp 299.000</p>
+                    <p class="desc">Tas anti-air dengan kompartemen khusus laptop 15 inci.</p>
+                    <button class="buy-btn">Beli Sekarang</button>
+                </div>
 
-# Menambahkan gambar ke dalam kontainer
-with container:
-    col1, col2, col3 = st.columns(3)
-    col2.image(
-        "LOGO2.png",
-        use_column_width=True,
-    )
+                <!-- Produk 3 -->
+                <div class="product-card">
+                    <img src="images/produk3.jpg" alt="Smartwatch">
+                    <h3>Smartwatch GT3</h3>
+                    <p class="price">Rp 1.250.000</p>
+                    <p class="desc">Monitor detak jantung, tahan air, baterai 7 hari.</p>
+                    <button class="buy-btn">Beli Sekarang</button>
+                </div>
 
-# Judul Aplikasi
-st.markdown(
-    "<center><h1>Aplikasi Skripsi</h1></center>", unsafe_allow_html=True
-)
-st.markdown(
-    "<center><h2>Optimasi Algoritma Naïve Bayes (NB) Menggunakan Algoritma Genetika (AG) dan Information Gain (IG) Pada Diagnosis Penyakit Jantung</h2></center>",
-    unsafe_allow_html=True,
-)
+                <!-- Produk 4 -->
+                <div class="product-card">
+                    <img src="images/produk4.jpg" alt="Headphone">
+                    <h3>Headphone Pro</h3>
+                    <p class="price">Rp 899.000</p>
+                    <p class="desc">Noise cancelling, koneksi Bluetooth 5.0, 20 jam pemakaian.</p>
+                    <button class="buy-btn">Beli Sekarang</button>
+                </div>
+            </div>
+        </main>
+    </div>
 
-# Sidebar
-# Menampilkan logo pada sidebar
-image = Image.open("LOGO.png")
-logo = st.sidebar.image(image, width=300)
-
-st.sidebar.title("SKRIPSI UNNES")
-
-menu1 = st.sidebar.selectbox("Main Menu", ["Dashboard", "Dataset", "Mining", "Tentang Saya"])
-menu2 = st.sidebar.selectbox("Side Menu", ["Upload Dataset", "Preprocessing", "Diagnosis"])
-
-# Halaman Skripsi
-if menu1 == "Dashboard":
-    st.subheader(" ")
-
-    st.markdown(
-        "<center><h1>Selamat Datang</h1></center>", unsafe_allow_html=True
-    )
-
-# Halaman Dataset
-elif menu1 == "Dataset":
-    st.subheader("Halaman Dataset")
-    st.write
+    <script src="script.js"></script>
+</body>
+</html>
