@@ -45,16 +45,17 @@ body {
     list-style: none;
 }
 
-.menu li a {
+.menu > ul > li > a {
     display: block;
     padding: 15px 20px;
     color: white;
     text-decoration: none;
     transition: all 0.3s;
     border-left: 4px solid transparent;
+    position: relative;
 }
 
-.menu li a:hover {
+.menu > ul > li > a:hover {
     background-color: #34495e;
     border-left: 4px solid #3498db;
 }
@@ -63,6 +64,40 @@ body {
     margin-right: 10px;
     width: 20px;
     text-align: center;
+}
+
+/* Dropdown Menu Styles */
+.has-dropdown .dropdown-icon {
+    position: absolute;
+    right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.has-dropdown .dropdown-icon.rotate {
+    transform: rotate(180deg);
+}
+
+.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #34495e;
+}
+
+.sub-menu.active {
+    max-height: 500px; /* Nilai cukup besar untuk menampung semua item */
+}
+
+.sub-menu li a {
+    display: block;
+    padding: 12px 20px 12px 50px;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.sub-menu li a:hover {
+    background-color: #3d566e;
 }
 
 /* Main Content Styles */
@@ -118,6 +153,22 @@ body {
     font-size: 1.2rem;
     font-weight: bold;
     color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.beli-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.beli-btn:hover {
+    background-color: #2980b9;
 }
 
 /* Responsive Styles */
