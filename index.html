@@ -3,42 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lapak Udin - Beranda</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Lapak Udin - Layanan Joki Gaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Sidebar -->
-    <nav class="sidebar">
-        <div class="sidebar-header">
-            <h2>Lapak Udin</h2>
-            <p>Jasa Gaming</p>
-        </div>
-        
-        <ul class="sidebar-menu">
-            <li><a href="index.html">🏠 Beranda</a></li>
-            <li class="dropdown">
-                <a href="pages/joki.html">🎮 Joki Rank</a>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-item"><a href="pages/rawat.html">🛡️ Rawat Akun</a></li>
-                    <li class="dropdown-item"><a href="pages/explore.html">🗺️ Explore</a></li>
-                    <li class="dropdown-item"><a href="pages/material.html">⚒️ Material</a></li>
-                </ul>
-            </li>
-            <li><a href="pages/topup.html">💎 Topup Diamond</a></li>
-            <li><a href="pages/tentang.html">📌 Tentang Kami</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <!-- Sidebar -->
+        <div id="sidebar"></div>
 
-    <!-- Konten Beranda -->
-    <div class="content">
-        <div class="header">
-            <h1>Selamat Datang di Lapak Udin</h1>
-            <p>Jasa Professional Perawatan Akun Game Terpercaya</p>
-        </div>
-
-        <!-- Services Grid (sama seperti sebelumnya) -->
+        <!-- Konten Utama -->
+        <main class="content" id="main-content">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Memuat...</p>
+            </div>
+        </main>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

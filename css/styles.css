@@ -1,23 +1,145 @@
-* {
+/* ===== VARIABLES & RESET ===== */
+:root {
+    --primary: #e94560;
+    --dark: #1a1a2e;
+    --light: #f8f9fa;
+    --secondary: #16213e;
+  }
+  
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-.sidebar {
-    position: fixed;
-    width: 250px;
-    height: 100%;
-    background: #2c3e50;
-    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background: var(--light);
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  /* ===== SIDEBAR STYLES ===== */
+  .sidebar {
+    width: 280px;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
     color: white;
-}
-
-/* Tambahkan semua style sebelumnya ke sini */
-/* ... (style yang sama seperti sebelumnya) ... */
-
-/* Rawat Akun Page Styles */
+    padding: 20px 0;
+    position: fixed;
+    height: 100%;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    padding: 0 20px 20px;
+    font-size: 1.5rem;
+    gap: 12px;
+    color: #00ffff;
+  }
+  
+  .logo i {
+    font-size: 2rem;
+  }
+  
+  nav ul {
+    list-style: none;
+  }
+  
+  nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    gap: 12px;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+  }
+  
+  nav ul li a:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+  }
+  
+  nav ul li a.active {
+    background: rgba(233, 69, 96, 0.1);
+    border-left: 4px solid var(--primary);
+    color: white;
+  }
+  
+  nav ul li i {
+    width: 24px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  /* ===== DROPDOWN MENU ===== */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown > a::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-left: auto;
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+  }
+  
+  .dropdown-menu {
+    list-style: none;
+    background: rgba(0,0,0,0.2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    max-height: 500px;
+  }
+  
+  .dropdown:hover > a::after {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown-menu li a {
+    padding-left: 60px !important;
+    font-size: 0.95rem;
+  }
+  
+  /* ===== MAIN CONTENT ===== */
+  .content {
+    flex: 1;
+    padding: 30px;
+    margin-left: 280px;
+    background: white;
+    min-height: 100vh;
+  }
+  
+  .loading-spinner {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .page-title {
+    color: var(--dark);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+  }
+/* ===== PRODUCT STYLES ===== */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -97,3 +219,78 @@
     100% { background-position: -200% 0; }
 }
 
+/* ===== ERROR STATES ===== */
+.error {
+    padding: 30px;
+    background: #ffecec;
+    border: 1px solid #ff6b6b;
+    border-radius: 8px;
+    color: #d33;
+  }
+  
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .page-content {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  /* ===== RESPONSIVE DESIGN ===== */
+  @media (max-width: 992px) {
+    .sidebar {
+      width: 240px;
+    }
+    .content {
+      margin-left: 240px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%;
+      position: static;
+      padding: 10px 0;
+    }
+    
+    nav ul {
+      display: flex;
+      overflow-x: auto;
+      padding: 0 10px;
+    }
+    
+    nav ul li {
+      flex: 0 0 auto;
+    }
+    
+    nav ul li a {
+      flex-direction: column;
+      padding: 10px 15px;
+      font-size: 0.8rem;
+      border-left: none;
+      border-bottom: 3px solid transparent;
+    }
+    
+    nav ul li a.active {
+      border-left: none;
+      border-bottom: 3px solid var(--primary);
+    }
+    
+    .dropdown > a::after {
+      display: none;
+    }
+    
+    .dropdown-menu {
+      position: static;
+    }
+    
+    .content {
+      margin-left: 0;
+      padding: 20px;
+    }
