@@ -20,18 +20,16 @@
                     <li><a href="index.html" class="active"><i class="fas fa-home"></i> Beranda</a></li>
                     
                     <li class="has-dropdown">
-                        <a href="#"><i class="fas fa-gamepad"></i> Layanan Joki <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <a href="#"><i class="fas fa-gamepad"></i> Joki <i class="fas fa-chevron-down dropdown-icon"></i></a>
                         <ul class="sub-menu">
-                            <li><a href="#"><i class="fas fa-trophy"></i> Joki Rank</a></li>
-                            <li><a href="#"><i class="fas fa-coins"></i> Top Up Game</a></li>
                             <li><a href="rawat.html"><i class="fas fa-user-shield"></i> Rawat Akun</a></li>
-                            <li><a href="#"><i class="fas fa-map-marked-alt"></i> Joki Explore</a></li>
-                            <li><a href="#"><i class="fas fa-cubes"></i> Joki Material</a></li>
+                            <li><a href="#"><i class="fas fa-map"></i> Explore</a></li>
+                            <li><a href="#"><i class="fas fa-cubes"></i> Material</a></li>
                         </ul>
                     </li>
                     
-                    <li><a href="#"><i class="fas fa-info-circle"></i> Tentang Kami</a></li>
-                    <li><a href="#"><i class="fas fa-headset"></i> Kontak</a></li>
+                    <li><a href="#"><i class="fas fa-coins"></i> Topup</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> Tentang</a></li>
                 </ul>
             </nav>
         </aside>
@@ -40,13 +38,35 @@
         <main class="main-content">
             <!-- Hero Section -->
             <section class="hero-section">
-                <img src="images/game-banner.jpg" alt="Banner Layanan DOBA AI" class="hero-image">
+                <img src="images/game-banner.jpg" alt="Game Banner" class="hero-image">
                 <div class="hero-overlay">
                     <div class="hero-content">
-                        <p class="hero-subtitle">LAYANAN GAMING PROFESIONAL</p>
+                        <p class="hero-subtitle">WELCOME TO</p>
                         <h1 class="hero-title">DOBA AI</h1>
-                        <p class="hero-description">Solusi lengkap untuk kebutuhan gaming Anda</p>
-                        <a href="#" class="hero-button">Lihat Layanan</a>
+                        <p class="hero-description">PROFESSIONAL GAMING SERVICES</p>
+                        <button class="hero-button">Our Services</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="services-section">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-ranking-star service-icon"></i>
+                        <h3>Joki Rank</h3>
+                        <p>Professional rank boosting by our expert players</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-coins service-icon"></i>
+                        <h3>Top Up</h3>
+                        <p>Fast and secure game currency top up</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-user-shield service-icon"></i>
+                        <h3>Account Care</h3>
+                        <p>Daily maintenance for your game account</p>
                     </div>
                 </div>
             </section>
@@ -54,13 +74,13 @@
     </div>
 
     <script>
-        // Dropdown menu functionality
+        // Script untuk dropdown menu
         document.addEventListener('DOMContentLoaded', function() {
             const dropdowns = document.querySelectorAll('.has-dropdown');
             
             dropdowns.forEach(dropdown => {
                 dropdown.addEventListener('click', function(e) {
-                    if (e.target.closest('a')) {
+                    if (e.target.tagName === 'A' && e.target.parentElement === this) {
                         e.preventDefault();
                         const subMenu = this.querySelector('.sub-menu');
                         const icon = this.querySelector('.dropdown-icon');
@@ -68,8 +88,7 @@
                         document.querySelectorAll('.sub-menu').forEach(menu => {
                             if (menu !== subMenu) {
                                 menu.classList.remove('active');
-                                const otherIcon = menu.closest('.has-dropdown').querySelector('.dropdown-icon');
-                                otherIcon.classList.remove('rotate');
+                                menu.previousElementSibling.querySelector('.dropdown-icon').classList.remove('rotate');
                             }
                         });
                         
@@ -79,13 +98,11 @@
                 });
             });
             
-            // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.has-dropdown')) {
                     document.querySelectorAll('.sub-menu').forEach(menu => {
                         menu.classList.remove('active');
-                        const icon = menu.closest('.has-dropdown').querySelector('.dropdown-icon');
-                        icon.classList.remove('rotate');
+                        menu.previousElementSibling.querySelector('.dropdown-icon').classList.remove('rotate');
                     });
                 }
             });
