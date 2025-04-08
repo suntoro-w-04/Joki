@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda - DOBA AI</title>
+    <title>DOBA AI</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -11,108 +11,67 @@
     <div class="wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <!-- Logo Toko -->
-            <div class="logo-container">
-                <img src="images/logo.png" alt="DOBA AI Logo" class="logo-img">
-                <h1 class="logo-text">DOBA AI</h1>
+            <div class="logo">
+                <h1>DOBA AI</h1>
             </div>
-
-            <!-- Profil Pengguna -->
-            <div class="profile-container">
-                <img src="images/profile.jpg" alt="Foto Profil" class="profile-img">
-                <div class="profile-name">Username</div>
-                <div class="profile-status">Premium Member</div>
-            </div>
-
-            <!-- Menu Navigasi -->
-            <nav class="menu-nav">
-                <a href="index.html" class="menu-item active">
-                    <i class="fas fa-home"></i>
-                    <span>Beranda</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-gamepad"></i>
-                    <span>Layanan Joki</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-coins"></i>
-                    <span>Top Up Game</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-history"></i>
-                    <span>Riwayat</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-cog"></i>
-                    <span>Pengaturan</span>
-                </a>
+            
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Beranda</a></li>
+                    
+                    <li class="has-dropdown">
+                        <a href="#"><i class="fas fa-gamepad"></i> Joki <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <ul class="sub-menu">
+                            <li><a href="rawat.html"><i class="fas fa-user-shield"></i> Rawat Akun</a></li>
+                            <li><a href="#"><i class="fas fa-map"></i> Explore</a></li>
+                            <li><a href="#"><i class="fas fa-cubes"></i> Material</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#"><i class="fas fa-coins"></i> Topup</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                </ul>
             </nav>
         </aside>
 
-        <!-- Konten Utama -->
+        <!-- Main Content Area (Kosong) -->
         <main class="main-content">
-            <!-- Banner Utama -->
-            <section class="hero-banner">
-                <img src="images/game-banner.jpg" alt="Banner Game Terbaru" class="banner-img">
-                <div class="banner-overlay">
-                    <h2>Layanan Gaming Terbaik</h2>
-                    <p>Joki profesional dan top up termurah</p>
-                    <button class="cta-button">Lihat Layanan</button>
-                </div>
-            </section>
-
-            <!-- Menu Cepat -->
-            <section class="quick-menu">
-                <h3 class="section-title">Akses Cepat</h3>
-                <div class="menu-grid">
-                    <a href="#" class="quick-item">
-                        <div class="quick-icon">
-                            <i class="fas fa-ranking-star"></i>
-                        </div>
-                        <span>Joki Rank</span>
-                    </a>
-                    <a href="#" class="quick-item">
-                        <div class="quick-icon">
-                            <i class="fas fa-diamond"></i>
-                        </div>
-                        <span>Top Up</span>
-                    </a>
-                    <a href="#" class="quick-item">
-                        <div class="quick-icon">
-                            <i class="fas fa-user-shield"></i>
-                        </div>
-                        <span>Rawat Akun</span>
-                    </a>
-                    <a href="#" class="quick-item">
-                        <div class="quick-icon">
-                            <i class="fas fa-ticket"></i>
-                        </div>
-                        <span>Voucher</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Promo Terbaru -->
-            <section class="promo-section">
-                <h3 class="section-title">Promo Spesial</h3>
-                <div class="promo-card">
-                    <img src="images/promo1.jpg" alt="Promo 1" class="promo-img">
-                    <div class="promo-content">
-                        <h4>Diskon 30% Joki Rank</h4>
-                        <p>Khusus hari ini sampai 30 Juni 2023</p>
-                        <button class="promo-button">Klaim Sekarang</button>
-                    </div>
-                </div>
-            </section>
+            <!-- Konten utama sengaja dikosongkan -->
         </main>
     </div>
 
     <script>
-        // Fungsi untuk button aktif
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
+        // Script untuk dropdown menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.has-dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A' && e.target.parentElement === this) {
+                        e.preventDefault();
+                        const subMenu = this.querySelector('.sub-menu');
+                        const icon = this.querySelector('.dropdown-icon');
+                        
+                        document.querySelectorAll('.sub-menu').forEach(menu => {
+                            if (menu !== subMenu) {
+                                menu.classList.remove('active');
+                                menu.previousElementSibling.querySelector('.dropdown-icon').classList.remove('rotate');
+                            }
+                        });
+                        
+                        subMenu.classList.toggle('active');
+                        icon.classList.toggle('rotate');
+                    }
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.has-dropdown')) {
+                    document.querySelectorAll('.sub-menu').forEach(menu => {
+                        menu.classList.remove('active');
+                        menu.previousElementSibling.querySelector('.dropdown-icon').classList.remove('rotate');
+                    });
+                }
             });
         });
     </script>
