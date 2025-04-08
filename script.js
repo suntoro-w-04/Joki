@@ -1,15 +1,61 @@
-// Efek klik menu sidebar
-document.querySelectorAll('nav ul li a').forEach(menu => {
-    menu.addEventListener('click', function() {
-        document.querySelector('nav ul li a.active').classList.remove('active');
-        this.classList.add('active');
-    });
-});
+/* ... (kode sebelumnya tetap) ... */
 
-// Alert saat tombol beli diklik
-document.querySelectorAll('.buy-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        const productName = this.parentElement.querySelector('h3').textContent;
-        alert(`Anda membeli: ${productName}`);
-    });
-});
+/* Style Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-icon {
+    margin-left: auto;
+    transition: transform 0.3s;
+}
+
+.dropdown-menu {
+    list-style: none;
+    background: #16213e;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+    padding-left: 40px !important;
+    font-size: 0.9rem;
+}
+
+/* Responsif Dropdown */
+@media (max-width: 768px) {
+    .dropdown {
+        position: static;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        display: none;
+        background: #1a1a2e;
+    }
+    
+    .dropdown.active .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .dropdown-icon {
+        display: none;
+    }
+}
