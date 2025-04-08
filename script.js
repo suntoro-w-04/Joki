@@ -1,131 +1,220 @@
 class Router {
   constructor() {
     this.routes = {};
+    this.cache = new Map();
     this.init();
   }
 
-  init() {
-    // Load sidebar first
-    this.loadSidebar()
-      .then(() => {
-        this.setupNavigation();
-        this.loadInitialPage();
-      })
-      .catch(error => {
-        console.error('Failed to initialize router:', error);
-        this.showError('Failed to load navigation');
-      });
+  async init() {
+    try {
+      await this.loadSidebar();
+      this.setupEventListeners();
+      this.loadInitialPage();
+      this.initMobileMenu();
+    } catch (error) {
+      this.showError('Gagal memuat aplikasi: ' + error.message);
+    }
   }
 
   async loadSidebar() {
     try {
+      const cached = this.cache.get('sidebar');
+      if (cached) return;
+
       const response = await fetch('partials/sidebar.html');
-      if (!response.ok) throw new Error('Sidebar not found');
+      if (!response.ok) throw new Error('Sidebar tidak ditemukan');
       
       const html = await response.text();
-      document.getElementById('sidebar').innerHTML = html;
+      const sidebar = document.getElementById('sidebar');
+      sidebar.innerHTML = html;
+      this.cache.set('sidebar', html);
       
-      // Debug log
-      console.log('Sidebar loaded successfully');
+      this.initDropdowns();
+      this.initScrollSpy();
     } catch (error) {
       console.error('Error loading sidebar:', error);
       throw error;
     }
   }
 
-  setupNavigation() {
-    // Handle all clicks on navigation links
+  setupEventListeners() {
+    // Delegasi event untuk seluruh dokumen
     document.addEventListener('click', (e) => {
       const link = e.target.closest('[data-page]');
-      if (link) {
-        e.preventDefault();
-        const page = link.getAttribute('data-page');
-        this.navigateTo(page);
-      }
+      const dropdownToggle = e.target.closest('.dropdown-toggle');
+      const mobileToggle = e.target.closest('.sidebar-toggle');
+
+      if (link) this.handleNavigationClick(e, link);
+      if (dropdownToggle) this.handleDropdownToggle(e, dropdownToggle);
+      if (mobileToggle) this.toggleMobileMenu();
     });
 
-    // Handle browser back/forward
-    window.addEventListener('popstate', () => {
-      this.loadPage(this.getCurrentPage());
-    });
+    window.addEventListener('popstate', () => this.handlePopState());
+    window.addEventListener('resize', this.handleResize.bind(this));
   }
 
-  navigateTo(page) {
-    // Update URL without reload
-    window.history.pushState({}, '', `#${page}`);
-    this.loadPage(page);
+  handleNavigationClick(e, link) {
+    e.preventDefault();
+    const page = link.dataset.page;
+    this.navigateTo(page);
+    this.toggleMobileMenu(false);
   }
 
-  loadInitialPage() {
-    const page = this.getCurrentPage() || 'beranda';
-    this.loadPage(page);
+  handleDropdownToggle(e, toggle) {
+    e.preventDefault();
+    const dropdown = toggle.closest('.dropdown');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+    toggle.setAttribute('aria-expanded', !isExpanded);
+    menu.style.maxHeight = isExpanded ? '0' : `${menu.scrollHeight}px`;
   }
 
-  getCurrentPage() {
-    return window.location.hash.substring(1);
+  initMobileMenu() {
+    this.sidebar = document.querySelector('.sidebar');
+    this.toggleButton = document.querySelector('.sidebar-toggle');
+  }
+
+  toggleMobileMenu(forceClose) {
+    const isActive = this.sidebar.classList.contains('active');
+    const shouldClose = forceClose || isActive;
+    
+    this.sidebar.classList.toggle('active', !shouldClose);
+    this.toggleButton.setAttribute('aria-expanded', !shouldClose);
+    document.body.style.overflow = shouldClose ? '' : 'hidden';
+  }
+
+  async navigateTo(page) {
+    if (this.currentPage === page) return;
+    
+    window.history.pushState({ page }, '', `#${page}`);
+    await this.loadPage(page);
+    this.currentPage = page;
   }
 
   async loadPage(page) {
     try {
-      // Show loading state
-      document.getElementById('main-content').innerHTML = `
-        <div class="loading-spinner">
-          <i class="fas fa-spinner fa-spin"></i>
-          <p>Memuat...</p>
-        </div>
-      `;
+      this.showLoadingState();
+      
+      const cachedHTML = this.cache.get(page);
+      if (cachedHTML) {
+        this.updateContent(cachedHTML);
+      } else {
+        const html = await this.fetchPageContent(page);
+        this.cache.set(page, html);
+        this.updateContent(html);
+      }
 
-      // Load page content
-      const response = await fetch(`pages/${page}.html`);
-      if (!response.ok) throw new Error('Page not found');
-      
-      const html = await response.text();
-      
-      // Update DOM
-      document.getElementById('main-content').innerHTML = `
-        <div class="page-content">
-          ${html}
-        </div>
-      `;
-      
-      // Update active menu
+      this.initPageSpecificFeatures(page);
       this.updateActiveMenu(page);
-      
-      console.log(`Loaded page: ${page}`);
+      this.handleDocumentTitle(page);
     } catch (error) {
-      console.error(`Error loading page ${page}:`, error);
       this.showErrorPage(error);
     }
   }
 
+  async fetchPageContent(page) {
+    const response = await fetch(`pages/${page}.html`);
+    if (!response.ok) throw new Error(`Halaman ${page} tidak ditemukan`);
+    return await response.text();
+  }
+
+  updateContent(html) {
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = `
+      <div class="page-content fade-in">
+        ${html}
+      </div>
+    `;
+  }
+
+  initPageSpecificFeatures(page) {
+    if (page === 'rawat-akun') {
+      this.initFAQAccordion();
+      this.initPackageSelectors();
+    }
+    
+    if (page === 'beranda') {
+      this.initProductCarousels();
+    }
+  }
+
+  initFAQAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      item.addEventListener('toggle', (e) => {
+        const icon = item.querySelector('.fa-chevron-down');
+        icon.style.transform = item.open ? 'rotate(180deg)' : 'rotate(0)';
+      });
+    });
+  }
+
+  initPackageSelectors() {
+    const packageCards = document.querySelectorAll('.package-card');
+    packageCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (!e.target.closest('.package-cta')) return;
+        this.handlePackageSelection(card.dataset.packageType);
+      });
+    });
+  }
+
+  handlePackageSelection(packageType) {
+    // Implementasi logika pemilihan paket
+    console.log('Paket dipilih:', packageType);
+  }
+
   updateActiveMenu(currentPage) {
     document.querySelectorAll('[data-page]').forEach(link => {
-      const linkPage = link.getAttribute('data-page');
+      const linkPage = link.dataset.page;
       const isActive = currentPage.startsWith(linkPage);
-      link.classList.toggle('active', isActive);
       
-      // Handle dropdown parent active state
+      link.classList.toggle('active', isActive);
+      link.setAttribute('aria-current', isActive ? 'page' : 'false');
+
       if (isActive && link.closest('.dropdown-menu')) {
-        link.closest('.dropdown').classList.add('active');
+        const dropdown = link.closest('.dropdown');
+        dropdown.classList.add('active');
+        dropdown.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'true');
       }
     });
   }
 
+  handleResize() {
+    if (window.innerWidth > 768) {
+      this.toggleMobileMenu(false);
+    }
+  }
+
+  showLoadingState() {
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = `
+      <div class="loading-spinner" role="alert" aria-busy="true">
+        <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+        <p>Memuat konten...</p>
+      </div>
+    `;
+  }
+
   showErrorPage(error) {
-    document.getElementById('main-content').innerHTML = `
-      <div class="error">
-        <h2>Terjadi Kesalahan</h2>
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = `
+      <div class="error fade-in" role="alert">
+        <h2>⚠️ Gagal Memuat Halaman</h2>
         <p>${error.message}</p>
-        <a href="#" data-page="beranda" class="btn">Kembali ke Beranda</a>
+        <button class="cta-btn" onclick="window.location.reload()">
+          <i class="fas fa-sync-alt"></i>
+          Coba Lagi
+        </button>
       </div>
     `;
   }
 }
 
-// Initialize router when DOM is ready
+// Inisialisasi Router
 document.addEventListener('DOMContentLoaded', () => {
   const router = new Router();
   
-  // Debugging helper
-  window.router = router;
+  // Ekspos router untuk debugging
+  window.appRouter = router;
 });

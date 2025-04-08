@@ -1,58 +1,192 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lapak Udin - Rawat Akun</title>
-    <link rel="stylesheet" href="/style.css">
+    <meta name="description" content="Layanan Rawat Akun Profesional untuk Game Genshin Impact dan Honkai Star Rail">
+    <title>Layanan Rawat Akun - Lapak Udin</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer">
 </head>
 <body>
-    <nav class="sidebar">
-        <!-- Sidebar sama seperti halaman sebelumnya -->
-        <!-- ... (salin dari index.html) ... -->
-    </nav>
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Navigasi utama">
+        <!-- Salin sidebar.html yang sudah diperbaiki -->
+    </aside>
 
-    <div class="content">
-        <h2 class="section-title">Paket Rawat Akun</h2>
-        
-        <div class="card-container">
-            <!-- Paket 1 -->
-            <div class="card">
-                <img src="../images/qiqi1.png" alt="Paket 1 Minggu">
-                <h3>Rakun Minggu Hemat (1 Minggu)</h3>
-                <p class="price">Rp 45.000/minggu</p>
-                <p>✅ Daily Quest<br>
-                   ✅ 160 Resin Harian<br>
-                   ✅ Klaim Event</p>
-                <p><button>Pilih Paket</button></p>
-            </div>
+    <main class="main-content container" id="main-content">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/pages/joki">Joki</a></li>
+                <li aria-current="page">Rawat Akun</li>
+            </ol>
+        </nav>
 
-            <!-- Paket 2 -->
-            <div class="card">
-                <img src="../images/qiqi2.png" alt="Paket 1 Bulan">
-                <h3>Rakun Bulanan Premium</h3>
-                <p class="price">Rp 150.000/bulan</p>
-                <p>✅ Full Daily Routine<br>
-                   ✅ Resin Management<br>
-                   ✅ Event Completion<br>
-                   ✅ Weekly Bosses</p>
-                <p><button>Pilih Paket</button></p>
+        <!-- Header Section -->
+        <header class="service-header">
+            <h1 class="page-title">Layanan Rawat Akun</h1>
+            <div class="service-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>100% Aman & Terpercaya</span>
             </div>
+        </header>
 
-            <!-- Paket 3 -->
-            <div class="card">
-                <img src="../images/qiqi3.png" alt="Paket Custom">
-                <h3>Rakun Custom</h3>
-                <p class="price">Mulai Rp 25.000/hari</p>
-                <p>✅ Pilih Durasi<br>
-                   ✅ Custom Aktivitas<br>
-                   ✅ Laporan Harian<br>
-                   ✅ Priority Service</p>
-                <p><button>Buat Custom</button></p>
-            </div>
+        <!-- Package Grid -->
+        <div class="package-grid">
+            <!-- Package 1 -->
+            <article class="package-card" aria-labelledby="package1-title">
+                <div class="package-header">
+                    <img src="../assets/images/package-weekly.webp" 
+                         alt="Ilustrasi paket rawat akun 1 minggu" 
+                         class="package-image"
+                         loading="lazy">
+                    <div class="package-badge">Paling Populer</div>
+                </div>
+                
+                <div class="package-body">
+                    <h2 id="package1-title" class="package-title">
+                        <i class="fas fa-calendar-week"></i>
+                        Paket Mingguan
+                    </h2>
+                    
+                    <div class="package-pricing">
+                        <span class="current-price">Rp 45.000</span>
+                        <span class="price-duration">/minggu</span>
+                        <del class="original-price" aria-label="Harga normal">Rp 60.000</del>
+                    </div>
+
+                    <ul class="package-features">
+                        <li><i class="fas fa-check-circle"></i> Daily Quest Harian</li>
+                        <li><i class="fas fa-check-circle"></i> Manajemen 160 Resin</li>
+                        <li><i class="fas fa-check-circle"></i> Klaim Event</li>
+                        <li><i class="fas fa-check-circle"></i> Laporan Harian</li>
+                    </ul>
+                </div>
+
+                <div class="package-footer">
+                    <button class="package-cta" aria-label="Pilih Paket Mingguan">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Pilih Paket</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Package 2 -->
+            <article class="package-card premium" aria-labelledby="package2-title">
+                <div class="package-header">
+                    <img src="../assets/images/package-monthly.webp" 
+                         alt="Ilustrasi paket rawat akun bulanan" 
+                         class="package-image"
+                         loading="lazy">
+                    <div class="package-badge">Best Value</div>
+                </div>
+                
+                <div class="package-body">
+                    <h2 id="package2-title" class="package-title">
+                        <i class="fas fa-calendar-alt"></i>
+                        Paket Bulanan
+                    </h2>
+                    
+                    <div class="package-pricing">
+                        <span class="current-price">Rp 150.000</span>
+                        <span class="price-duration">/bulan</span>
+                        <div class="price-saving" aria-label="Hemat 25%">Hemat 25%</div>
+                    </div>
+
+                    <ul class="package-features">
+                        <li><i class="fas fa-check-circle"></i> Semua Fitur Mingguan</li>
+                        <li><i class="fas fa-check-circle"></i> Weekly Bosses</li>
+                        <li><i class="fas fa-check-circle"></i> Spiral Abyss</li>
+                        <li><i class="fas fa-check-circle"></i> Character Building</li>
+                    </ul>
+                </div>
+
+                <div class="package-footer">
+                    <button class="package-cta" aria-label="Pilih Paket Bulanan">
+                        <i class="fas fa-gem"></i>
+                        <span>Pilih Premium</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Package 3 -->
+            <article class="package-card custom" aria-labelledby="package3-title">
+                <div class="package-header">
+                    <img src="../assets/images/package-custom.webp" 
+                         alt="Ilustrasi paket custom" 
+                         class="package-image"
+                         loading="lazy">
+                    <div class="package-badge">Fleksibel</div>
+                </div>
+                
+                <div class="package-body">
+                    <h2 id="package3-title" class="package-title">
+                        <i class="fas fa-palette"></i>
+                        Paket Custom
+                    </h2>
+                    
+                    <div class="package-pricing">
+                        <span class="current-price">Mulai Rp 25.000</span>
+                        <span class="price-duration">/hari</span>
+                    </div>
+
+                    <ul class="package-features">
+                        <li><i class="fas fa-check-circle"></i> Pilih Durasi</li>
+                        <li><i class="fas fa-check-circle"></i> Aktivitas Custom</li>
+                        <li><i class="fas fa-check-circle"></i> Laporan Harian</li>
+                        <li><i class="fas fa-check-circle"></i> Prioritas CS</li>
+                    </ul>
+                </div>
+
+                <div class="package-footer">
+                    <button class="package-cta" aria-label="Buat Paket Custom">
+                        <i class="fas fa-wrench"></i>
+                        <span>Custom Sekarang</span>
+                    </button>
+                </div>
+            </article>
         </div>
-    </div>
 
-    <script src="/script.js"></script>
+        <!-- FAQ Section -->
+        <section class="faq-section" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="section-title">
+                <i class="fas fa-question-circle"></i>
+                Pertanyaan Umum
+            </h2>
+
+            <div class="faq-accordion">
+                <!-- FAQ Item 1 -->
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Apakah akun saya aman?
+                        <i class="fas fa-chevron-down"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Kami menggunakan sistem keamanan 2FA dan tidak pernah menyimpan password Anda.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 2 -->
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Bagaimana cara pembayaran?
+                        <i class="fas fa-chevron-down"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Pembayaran bisa melalui transfer bank, e-wallet, atau QRIS.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/main.js" defer></script>
 </body>
 </html>
