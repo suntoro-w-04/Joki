@@ -9,16 +9,13 @@
 </head>
 <body>
     <div class="wrapper">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <h1>DOBA AI</h1>
             </div>
-            
             <nav class="menu">
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
-                    
                     <li class="has-dropdown">
                         <a href="#"><i class="fas fa-gamepad"></i> Joki <i class="fas fa-chevron-down dropdown-icon"></i></a>
                         <ul class="sub-menu">
@@ -27,14 +24,12 @@
                             <li><a href="#"><i class="fas fa-cubes"></i> Material</a></li>
                         </ul>
                     </li>
-                    
                     <li><a href="#"><i class="fas fa-coins"></i> Topup</a></li>
                     <li><a href="#"><i class="fas fa-info-circle"></i> Tentang</a></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
             <div class="page-header">
                 <h2><i class="fas fa-user-shield"></i> Layanan Rawat Akun</h2>
@@ -42,9 +37,8 @@
             </div>
             
             <div class="produk-container">
-                <!-- Produk 1 -->
                 <div class="produk-item">
-                    <img src="https://via.placeholder.com/300x200?text=Rawat+Harian" alt="Rawat Harian">
+                    <img src="images/rawat-harian.jpg" alt="Rawat Harian">
                     <div class="produk-info">
                         <h3>Rawat Harian</h3>
                         <p>Layanan rawat akun harian termasuk daily quest, login, dan maintenance</p>
@@ -55,84 +49,24 @@
                         <button class="beli-btn">Pesan Sekarang</button>
                     </div>
                 </div>
-
-                <!-- Produk 2 -->
-                <div class="produk-item">
-                    <img src="https://via.placeholder.com/300x200?text=Rawat+Mingguan" alt="Rawat Mingguan">
-                    <div class="produk-info">
-                        <h3>Rawat Mingguan</h3>
-                        <p>Paket hemat untuk perawatan akun selama 7 hari dengan bonus extra</p>
-                        <div class="produk-meta">
-                            <span class="harga">Rp 150.000/minggu</span>
-                            <span class="rating"><i class="fas fa-star"></i> 4.8/5</span>
-                        </div>
-                        <button class="beli-btn">Pesan Sekarang</button>
-                    </div>
-                </div>
-
-                <!-- Produk 3 -->
-                <div class="produk-item">
-                    <img src="https://via.placeholder.com/300x200?text=Rawat+Bulanan" alt="Rawat Bulanan">
-                    <div class="produk-info">
-                        <h3>Rawat Bulanan</h3>
-                        <p>Perawatan premium selama 30 hari dengan garansi keamanan akun</p>
-                        <div class="produk-meta">
-                            <span class="harga">Rp 500.000/bulan</span>
-                            <span class="rating"><i class="fas fa-star"></i> 5.0/5</span>
-                        </div>
-                        <button class="beli-btn">Pesan Sekarang</button>
-                    </div>
-                </div>
-
-                <!-- Produk 4 -->
-                <div class="produk-item">
-                    <img src="https://via.placeholder.com/300x200?text=Rawat+Custom" alt="Rawat Custom">
-                    <div class="produk-info">
-                        <h3>Rawat Custom</h3>
-                        <p>Layanan rawat akun sesuai kebutuhan spesifik Anda</p>
-                        <div class="produk-meta">
-                            <span class="harga">Mulai Rp 10.000</span>
-                            <span class="rating"><i class="fas fa-star"></i> 4.7/5</span>
-                        </div>
-                        <button class="beli-btn">Konsultasi Sekarang</button>
-                    </div>
-                </div>
+                <!-- Additional rawat items would go here -->
             </div>
         </main>
     </div>
 
     <script>
-        // Script untuk dropdown menu
         document.addEventListener('DOMContentLoaded', function() {
             const dropdowns = document.querySelectorAll('.has-dropdown');
-            
             dropdowns.forEach(dropdown => {
                 dropdown.addEventListener('click', function(e) {
                     if (e.target.tagName === 'A' && e.target.parentElement === this) {
                         e.preventDefault();
                         const subMenu = this.querySelector('.sub-menu');
                         const icon = this.querySelector('.dropdown-icon');
-                        
-                        document.querySelectorAll('.sub-menu').forEach(menu => {
-                            if (menu !== subMenu) {
-                                menu.classList.remove('active');
-                                menu.previousElementSibling.querySelector('.dropdown-icon').classList.remove('rotate');
-                            }
-                        });
-                        
                         subMenu.classList.toggle('active');
                         icon.classList.toggle('rotate');
                     }
                 });
-            });
-            
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.has-dropdown')) {
-                    document.querySelectorAll('.sub-menu').forEach(menu => {
-                        menu.classList.remove('active');
-                        menu.previousElementSibling.querySelector('.dropdown-icon').classList.remove('rotate');
-                    });
-                }
             });
         });
     </script>

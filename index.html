@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOBA AI</title>
+    <title>Beranda - DOBA AI</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="wrapper">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <h1>DOBA AI</h1>
             </div>
-            
             <nav class="menu">
                 <ul>
                     <li><a href="index.html" class="active"><i class="fas fa-home"></i> Beranda</a></li>
-                    
                     <li class="has-dropdown">
                         <a href="#"><i class="fas fa-gamepad"></i> Joki <i class="fas fa-chevron-down dropdown-icon"></i></a>
                         <ul class="sub-menu">
@@ -27,52 +24,101 @@
                             <li><a href="#"><i class="fas fa-cubes"></i> Material</a></li>
                         </ul>
                     </li>
-                    
                     <li><a href="#"><i class="fas fa-coins"></i> Topup</a></li>
                     <li><a href="#"><i class="fas fa-info-circle"></i> Tentang</a></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- Main Content Area (Kosong) -->
         <main class="main-content">
-            <!-- Konten utama sengaja dikosongkan -->
+            <section class="promo-banner">
+                <div class="promo-slide active">
+                    <img src="images/banner-promo1.jpg" alt="Promo Spesial">
+                    <div class="promo-content">
+                        <h2>Promo Spesial Hari Ini!</h2>
+                        <p>Diskon hingga 50% untuk semua layanan joki</p>
+                        <a href="#" class="promo-btn">Lihat Promo</a>
+                    </div>
+                </div>
+                <div class="promo-slide">
+                    <img src="images/banner-promo2.jpg" alt="Paket Bulanan">
+                    <div class="promo-content">
+                        <h2>Paket Bulanan Termurah</h2>
+                        <p>Hanya Rp 400.000/bulan untuk rawat akun premium</p>
+                        <a href="#" class="promo-btn">Beli Sekarang</a>
+                    </div>
+                </div>
+                <div class="promo-controls">
+                    <button class="promo-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="promo-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <section class="popular-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-fire"></i> Produk Populer</h2>
+                    <a href="#" class="view-all">Lihat Semua</a>
+                </div>
+                <div class="produk-container">
+                    <div class="produk-item popular">
+                        <div class="popular-badge">HOT</div>
+                        <img src="images/joki-rank.jpg" alt="Joki Rank">
+                        <div class="produk-info">
+                            <h3>Joki Rank Premium</h3>
+                            <p>Naikkan rank Anda dengan tim profesional kami</p>
+                            <div class="produk-meta">
+                                <span class="harga">Rp 100.000</span>
+                                <span class="sold">Terjual 500+</span>
+                            </div>
+                            <button class="beli-btn"><i class="fas fa-shopping-cart"></i> Pesan</button>
+                        </div>
+                    </div>
+                    <!-- Additional product items would go here -->
+                </div>
+            </section>
         </main>
     </div>
 
     <script>
-        // Script untuk dropdown menu
         document.addEventListener('DOMContentLoaded', function() {
+            // Dropdown menu script
             const dropdowns = document.querySelectorAll('.has-dropdown');
-            
             dropdowns.forEach(dropdown => {
                 dropdown.addEventListener('click', function(e) {
                     if (e.target.tagName === 'A' && e.target.parentElement === this) {
                         e.preventDefault();
                         const subMenu = this.querySelector('.sub-menu');
                         const icon = this.querySelector('.dropdown-icon');
-                        
-                        document.querySelectorAll('.sub-menu').forEach(menu => {
-                            if (menu !== subMenu) {
-                                menu.classList.remove('active');
-                                menu.previousElementSibling.querySelector('.dropdown-icon').classList.remove('rotate');
-                            }
-                        });
-                        
                         subMenu.classList.toggle('active');
                         icon.classList.toggle('rotate');
                     }
                 });
             });
-            
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.has-dropdown')) {
-                    document.querySelectorAll('.sub-menu').forEach(menu => {
-                        menu.classList.remove('active');
-                        menu.previousElementSibling.querySelector('.dropdown-icon').classList.remove('rotate');
-                    });
-                }
+
+            // Promo banner slider
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.promo-slide');
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+            }
+
+            document.querySelector('.promo-next').addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
             });
+
+            document.querySelector('.promo-prev').addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            });
+
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }, 5000);
         });
     </script>
 </body>
