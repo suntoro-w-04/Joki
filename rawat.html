@@ -40,10 +40,38 @@
                 <div class="produk-item">
                     <img src="images/rawat-harian.jpg" alt="Rawat Harian">
                     <div class="produk-info">
-                        <h3>Rawat Harian</h3>
-                        <p>Layanan rawat akun harian termasuk daily quest, login, dan maintenance</p>
+                        <h3>Rawat Mingguan</h3>
+                        <p>Daily + Resin</p>
                         <div class="produk-meta">
-                            <span class="harga">Rp 25.000/hari</span>
+                            <span class="harga">Rp 45.000/minggu</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.9/5</span>
+                        </div>
+                        <button class="beli-btn">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="produk-container">
+                <div class="produk-item">
+                    <img src="images/rawat-harian.jpg" alt="Rawat Harian">
+                    <div class="produk-info">
+                        <h3>Rawat Bulan hemat</h3>
+                        <p>Daily + Resin + exp BP</p>
+                        <div class="produk-meta">
+                            <span class="harga">Rp 150.000/bulan</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.9/5</span>
+                        </div>
+                        <button class="beli-btn">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="produk-container">
+                <div class="produk-item">
+                    <img src="images/rawat-harian.jpg" alt="Rawat Harian">
+                    <div class="produk-info">
+                        <h3>Rawat Bulan Mantap</h3>
+                        <p>lengkap termasuk event, Dyli, Resin, Spiral, IT dan exp BP</p>
+                        <div class="produk-meta">
+                            <span class="harga">Rp 180.000/bulan</span>
                             <span class="rating"><i class="fas fa-star"></i> 4.9/5</span>
                         </div>
                         <button class="beli-btn">Pesan Sekarang</button>
@@ -54,21 +82,6 @@
         </main>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdowns = document.querySelectorAll('.has-dropdown');
-            dropdowns.forEach(dropdown => {
-                dropdown.addEventListener('click', function(e) {
-                    if (e.target.tagName === 'A' && e.target.parentElement === this) {
-                        e.preventDefault();
-                        const subMenu = this.querySelector('.sub-menu');
-                        const icon = this.querySelector('.dropdown-icon');
-                        subMenu.classList.toggle('active');
-                        icon.classList.toggle('rotate');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
