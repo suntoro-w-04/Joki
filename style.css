@@ -333,7 +333,7 @@ body {
 /* General Styles */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
 
@@ -350,7 +350,7 @@ body {
     padding: 20px 0;
     position: fixed;
     height: 100%;
-    z-index: 1;
+    z-index: 100;
 }
 
 .logo h1 {
@@ -405,78 +405,71 @@ body {
     transform: rotate(180deg);
 }
 
-/* Hero Image Styles */
+/* Hero Banner Styles */
 .main-content {
     flex: 1;
-    margin-left: 250px; /* Match sidebar width */
+    margin-left: 250px;
 }
 
-.hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), url('../images/game-banner.jpg'));
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
+.hero-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('../images/game-banner.jpg') no-repeat center center;
     background-size: cover;
-    position: relative;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.hero-text {
     text-align: center;
     color: white;
     padding: 0 20px;
 }
 
-.hero-text h1 {
-    font-size: 3rem;
-    font-weight: 300;
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 3px;
     margin-bottom: 10px;
 }
 
-.hero-text h2 {
-    font-size: 5rem;
+.hero-content h2 {
+    font-size: 4rem;
     font-weight: 700;
-    margin: 0;
     line-height: 1.1;
+    margin: 20px 0;
+    text-transform: uppercase;
 }
 
-.hero-text p {
-    font-size: 1.5rem;
-    margin: 20px 0 30px;
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
 }
 
-.hero-btn {
+.btn-download {
     display: inline-block;
     padding: 12px 30px;
     background-color: #ff6b6b;
     color: white;
     text-decoration: none;
     border-radius: 30px;
-    font-size: 1rem;
     font-weight: 600;
     transition: all 0.3s;
     border: 2px solid #ff6b6b;
 }
 
-.hero-btn:hover {
+.btn-download:hover {
     background-color: transparent;
     color: #ff6b6b;
 }
 
 /* Responsive Styles */
 @media (max-width: 992px) {
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-text h2 {
-        font-size: 4rem;
-    }
-    
-    .hero-text p {
-        font-size: 1.3rem;
+    .hero-content h2 {
+        font-size: 3rem;
     }
 }
 
@@ -484,49 +477,32 @@ body {
     .wrapper {
         flex-direction: column;
     }
-    
+
     .sidebar {
         width: 100%;
         height: auto;
         position: relative;
     }
-    
+
     .main-content {
         margin-left: 0;
     }
-    
-    .hero-image {
-        height: 80vh;
+
+    .hero-content h1 {
+        font-size: 1.2rem;
     }
-    
-    .hero-text h1 {
-        font-size: 2rem;
+
+    .hero-content h2 {
+        font-size: 2.5rem;
     }
-    
-    .hero-text h2 {
-        font-size: 3rem;
-    }
-    
-    .hero-text p {
-        font-size: 1.1rem;
+
+    .hero-content p {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 576px) {
-    .hero-text h1 {
-        font-size: 1.8rem;
-    }
-    
-    .hero-text h2 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-text p {
-        font-size: 1rem;
-    }
-    
-    .hero-btn {
-        padding: 10px 25px;
-        font-size: 0.9rem;
+    .hero-content h2 {
+        font-size: 2rem;
     }
 }
