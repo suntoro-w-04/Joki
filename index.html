@@ -3,66 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LapakUdin</title>
+    <title>GamingZone - Layanan Gaming Terbaik</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo">
-                <i class="fas fa-store"></i>
-                <span>LapakUdin</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active"><i class="fas fa-home"></i> Joki </a></li>
-                    <li><a href="#"><i class="fas fa-box-open"></i> TopUp </a></li>
-                    <li><a href="#"><i class="fas fa-history"></i> Tentang Kami </a></li>
-                </ul>
-            </nav>
-        </aside>
+        <!-- Sidebar akan di-load via JS -->
+        <div id="sidebar"></div>
 
-        <!-- Konten Utama -->
-        <main class="content">
-            <h1>Daftar Produk</h1>
-            <div class="products">
-                <!-- Produk 1 -->
-                <div class="product-card">
-                    <img src="images/produk1.jpg" alt="Sepatu Sport">
-                    <h3>Sepatu Sport X1</h3>
-                    <p class="price">Rp 450.000</p>
-                    <p class="desc">Sepatu nyaman untuk lari sehari-hari, tersedia ukuran 38-44.</p>
-                    <button class="buy-btn">Beli Sekarang</button>
-                </div>
-
-                <!-- Produk 2 -->
-                <div class="product-card">
-                    <img src="images/produk2.jpg" alt="Tas Laptop">
-                    <h3>Tas Laptop Premium</h3>
-                    <p class="price">Rp 299.000</p>
-                    <p class="desc">Tas anti-air dengan kompartemen khusus laptop 15 inci.</p>
-                    <button class="buy-btn">Beli Sekarang</button>
-                </div>
-
-                <!-- Produk 3 -->
-                <div class="product-card">
-                    <img src="images/produk3.jpg" alt="Smartwatch">
-                    <h3>Smartwatch GT3</h3>
-                    <p class="price">Rp 1.250.000</p>
-                    <p class="desc">Monitor detak jantung, tahan air, baterai 7 hari.</p>
-                    <button class="buy-btn">Beli Sekarang</button>
-                </div>
-
-                <!-- Produk 4 -->
-                <div class="product-card">
-                    <img src="images/produk4.jpg" alt="Headphone">
-                    <h3>Headphone Pro</h3>
-                    <p class="price">Rp 899.000</p>
-                    <p class="desc">Noise cancelling, koneksi Bluetooth 5.0, 20 jam pemakaian.</p>
-                    <button class="buy-btn">Beli Sekarang</button>
-                </div>
+        <!-- Konten Utama Dinamis -->
+        <main class="content" id="main-content">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Memuat...</p>
             </div>
         </main>
     </div>

@@ -1,13 +1,14 @@
-/* Reset & Dasar */
+/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #f5f5f5;
+    background: #f8f9fa;
+    color: #333;
 }
 
 .container {
@@ -15,13 +16,20 @@ body {
     min-height: 100vh;
 }
 
+.loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
 /* Sidebar */
 .sidebar {
-    width: 250px;
-    background: #2c3e50;
+    width: 280px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: white;
     padding: 20px 0;
-    transition: all 0.3s;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
 }
 
 .logo {
@@ -29,7 +37,9 @@ body {
     align-items: center;
     padding: 0 20px 20px;
     font-size: 1.5rem;
-    gap: 10px;
+    gap: 12px;
+    color: #00ffff;
+    font-weight: 700;
 }
 
 .logo i {
@@ -43,118 +53,241 @@ nav ul {
 nav ul li a {
     display: flex;
     align-items: center;
-    padding: 15px 20px;
-    color: white;
+    padding: 15px 25px;
+    color: #eee;
     text-decoration: none;
-    gap: 10px;
-    transition: background 0.3s;
+    gap: 12px;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
 }
 
 nav ul li a:hover {
-    background: #34495e;
+    background: rgba(255,255,255,0.05);
+    border-left: 4px solid #e94560;
 }
 
 nav ul li a.active {
-    background: #3498db;
+    background: rgba(233, 69, 96, 0.1);
+    border-left: 4px solid #e94560;
+    color: white;
 }
 
 nav ul li i {
-    width: 20px;
+    width: 24px;
     text-align: center;
-}
-
-/* Konten Utama */
-.content {
-    flex: 1;
-    padding: 30px;
-}
-
-.content h1 {
-    margin-bottom: 30px;
-    color: #2c3e50;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.product-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-}
-
-.product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.product-card h3 {
-    padding: 15px 15px 0;
-    color: #333;
-}
-
-.product-card .price {
-    padding: 5px 15px;
-    color: #e74c3c;
-    font-weight: bold;
     font-size: 1.1rem;
 }
 
-.product-card .desc {
-    padding: 0 15px 15px;
-    color: #666;
-    font-size: 0.9rem;
+/* Dropdown */
+.dropdown {
+    position: relative;
 }
 
-.buy-btn {
-    display: block;
-    width: calc(100% - 30px);
-    margin: 0 15px 15px;
-    padding: 10px;
-    background: #3498db;
+.dropdown > a::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-left: auto;
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.dropdown-menu {
+    list-style: none;
+    background: rgba(0,0,0,0.2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.dropdown:hover .dropdown-menu {
+    max-height: 500px;
+}
+
+.dropdown:hover > a::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+    padding-left: 60px !important;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+.content {
+    flex: 1;
+    padding: 30px;
+    background: white;
+}
+
+.page-title {
+    color: #1a1a2e;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e94560;
+    display: inline-block;
+}
+
+.page-title i {
+    margin-right: 10px;
+}
+
+/* Card Styles */
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eee;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(233, 69, 96, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #e94560;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    text-decoration: none;
+    font-size: 0.95rem;
 }
 
-.buy-btn:hover {
-    background: #2980b9;
+.btn:hover {
+    background: #d23352;
 }
 
-/* Responsif */
+/* Error Page */
+.error-page {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.error-page h1 {
+    font-size: 5rem;
+    color: #e94560;
+    margin-bottom: 20px;
+}
+
+.error-page p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 240px;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
     }
+    
     .sidebar {
         width: 100%;
         padding: 10px 0;
     }
+    
     nav ul {
         display: flex;
-        justify-content: space-around;
+        overflow-x: auto;
+        padding: 0 10px;
     }
+    
+    nav ul li {
+        flex: 1 0 auto;
+    }
+    
     nav ul li a {
         flex-direction: column;
-        padding: 10px;
+        padding: 10px 15px;
         font-size: 0.8rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
     }
+    
+    nav ul li a:hover,
+    nav ul li a.active {
+        border-left: none;
+        border-bottom: 3px solid #e94560;
+    }
+    
     nav ul li i {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        margin-bottom: 5px;
     }
+    
+    .dropdown > a::after {
+        display: none;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        max-height: 0;
+        background: rgba(0,0,0,0.3);
+    }
+    
+    .dropdown.active .dropdown-menu {
+        max-height: 500px;
+    }
+    
+    .dropdown-menu li a {
+        padding-left: 30px !important;
+    }
+    
     .content {
         padding: 20px;
     }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-content {
+    animation: fadeIn 0.5s ease-out;
 }
