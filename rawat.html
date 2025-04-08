@@ -38,7 +38,7 @@
             
             <div class="produk-container">
                 <div class="produk-item">
-                    <img src="images/qiqi1.png" alt="Rawat Harian">
+                    <img src="images/qiqi1.png" alt="Rawat Mingguan">
                     <div class="produk-info">
                         <h3>Rawat Mingguan</h3>
                         <p>Daily + Resin</p>
@@ -50,9 +50,8 @@
                     </div>
                 </div>
 
-                <div class="produk-container">
                 <div class="produk-item">
-                    <img src="images/qiqi1.png" alt="Rawat Harian">
+                    <img src="images/qiqi1.png" alt="Rawat Bulan Hemat">
                     <div class="produk-info">
                         <h3>Rawat Bulan Hemat</h3>
                         <p>Daily + Resin + exp BP</p>
@@ -64,12 +63,11 @@
                     </div>
                 </div>
 
-                <div class="produk-container">
                 <div class="produk-item">
-                    <img src="images/qiqi1.png" alt="Rawat Harian">
+                    <img src="images/qiqi1.png" alt="Rawat Bulan Mantap">
                     <div class="produk-info">
                         <h3>Rawat Bulan Mantap</h3>
-                        <p>lengkap termasuk event, Dyli, Resin, Spiral, IT dan exp BP</p>
+                        <p>Lengkap termasuk event, Dyli, Resin, Spiral, IT dan exp BP</p>
                         <div class="produk-meta">
                             <span class="harga">Rp 180.000/bulan</span>
                             <span class="rating"><i class="fas fa-star"></i> 4.9/5</span>
@@ -78,12 +76,11 @@
                     </div>
                 </div>
 
-                <div class="produk-container">
                 <div class="produk-item">
-                    <img src="images/qiqi1.png" alt="Rawat Harian">
+                    <img src="images/qiqi1.png" alt="Rawat Patch">
                     <div class="produk-info">
                         <h3>Rawat Patch</h3>
-                        <p>lengkap termasuk event, Dyli, Resin, Spiral, IT dan exp BP</p>
+                        <p>Lengkap termasuk event, Dyli, Resin, Spiral, IT dan exp BP</p>
                         <div class="produk-meta">
                             <span class="harga">Rp 252.000/Patch</span>
                             <span class="rating"><i class="fas fa-star"></i> 4.9/5</span>
@@ -95,7 +92,22 @@
             </div>
         </main>
     </div>
-
-    <script src="script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.has-dropdown');
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A' && e.target.parentElement === this) {
+                        e.preventDefault();
+                        const subMenu = this.querySelector('.sub-menu');
+                        const icon = this.querySelector('.dropdown-icon');
+                        subMenu.classList.toggle('active');
+                        icon.classList.toggle('rotate');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
