@@ -147,55 +147,34 @@ nav ul li i {
   gap: 20px;
 }
 
-.product-card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(233, 69, 96, 0.2);
-}
-
-.product-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-body {
-  padding: 20px;
-}
-
-.card-title {
-  color: var(--dark);
-  margin-bottom: 10px;
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
 }
 
 .price {
-  color: var(--primary);
-  font-weight: bold;
-  margin: 10px 0;
+  color: grey;
+  font-size: 22px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: var(--primary);
-  color: white;
+.card button {
   border: none;
-  border-radius: 5px;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
   cursor: pointer;
-  transition: background 0.3s;
+  width: 100%;
+  font-size: 18px;
 }
 
-.btn:hover {
-  background: #d23352;
+.card button:hover {
+  opacity: 0.7;
 }
-
 /* ===== ERROR STATES ===== */
 .error {
   padding: 30px;
