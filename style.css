@@ -191,3 +191,46 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Tambahan CSS untuk halaman Rawat Akun */
+.page-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.page-header h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.page-header h2 i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+.page-header p {
+    color: #7f8c8d;
+}
+
+.produk-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rating {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.active {
+    background-color: #34495e;
+    border-left: 4px solid #3498db !important;
+}
+
+.active a {
+    color: #fff !important;
+}
