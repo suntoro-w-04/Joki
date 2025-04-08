@@ -1,61 +1,38 @@
-/* ... (kode sebelumnya tetap) ... */
+// Dropdown untuk mobile
+document.querySelectorAll('.dropdown > a').forEach(menu => {
+    menu.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768px) {
+            e.preventDefault();
+            this.parentElement.classList.toggle('active');
+        }
+    });
+});
 
-/* Style Dropdown Menu */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-icon {
-    margin-left: auto;
-    transition: transform 0.3s;
-}
-
-.dropdown-menu {
-    list-style: none;
-    background: #16213e;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-    z-index: 10;
-}
-
-.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-}
-
-.dropdown:hover .dropdown-icon {
-    transform: rotate(180deg);
-}
-
-.dropdown-menu li a {
-    padding-left: 40px !important;
-    font-size: 0.9rem;
-}
-
-/* Responsif Dropdown */
-@media (max-width: 768px) {
-    .dropdown {
-        position: static;
+// Tutup dropdown saat klik di luar
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown') && window.innerWidth <= 768px) {
+        document.querySelectorAll('.dropdown').forEach(drop => {
+            drop.classList.remove('active');
+        });
     }
-    
-    .dropdown-menu {
-        position: static;
-        display: none;
-        background: #1a1a2e;
-    }
-    
-    .dropdown.active .dropdown-menu {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .dropdown-icon {
-        display: none;
-    }
-}
+// Animasi hover card
+document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 10px 20px rgba(233, 69, 96, 0.3)';
+    });
+    card.addEventListener('mouseleave', function() {
+        this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    });
+});
+
+// Popup detail layanan
+document.querySelectorAll('.buy-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const service = this.parentElement.querySelector('h3').textContent;
+        const price = this.parentElement.querySelector('.price').textContent;
+        
+        alert(`🚀 Anda memilih:\n${service}\n${price}\n\nTim kami akan segera menghubungi Anda!`);
+    });
+});
+});
