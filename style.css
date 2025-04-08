@@ -329,3 +329,196 @@ body {
         font-size: 1.5rem;
     }
 }
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+}
+
+.logo h1 {
+    text-align: center;
+    margin: 0 0 30px 0;
+    font-size: 1.8rem;
+    color: #ecf0f1;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.menu li a:hover {
+    background-color: #34495e;
+}
+
+.menu li a.active {
+    background-color: #3498db;
+}
+
+.menu li a i {
+    margin-right: 10px;
+}
+
+.has-dropdown .sub-menu {
+    display: none;
+    background-color: #34495e;
+    padding-left: 20px;
+}
+
+.has-dropdown .sub-menu.active {
+    display: block;
+}
+
+.has-dropdown .dropdown-icon {
+    float: right;
+    transition: transform 0.3s;
+}
+
+.has-dropdown .dropdown-icon.rotate {
+    transform: rotate(180deg);
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    background-color: #ecf0f1;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/game-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #ff6b6b;
+    color: white;
+    border: 2px solid #ff6b6b;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: #ff6b6b;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: #333;
+}
+
+.btn-tertiary {
+    background-color: #4ecdc4;
+    color: white;
+    border: 2px solid #4ecdc4;
+}
+
+.btn-tertiary:hover {
+    background-color: transparent;
+    color: #4ecdc4;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
