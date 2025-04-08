@@ -211,6 +211,58 @@ class Router {
   }
 }
 
+// Dalam class Router tambahkan/timpa method berikut:
+initDropdowns() {
+  document.querySelectorAll('.dropdown').forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    
+    // Inisialisasi state awal
+    toggle.setAttribute('aria-expanded', 'false');
+    menu.style.maxHeight = '0';
+    
+    // Handle keyboard navigation
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.toggleDropdown(dropdown);
+      }
+    });
+  });
+}
+
+toggleDropdown(dropdown, forceClose = false) {
+  const isActive = dropdown.classList.contains('active');
+  const toggle = dropdown.querySelector('.dropdown-toggle');
+  const menu = dropdown.querySelector('.dropdown-menu');
+  
+  // Tutup dropdown lainnya
+  if (!forceClose) {
+    document.querySelectorAll('.dropdown.active').forEach(other => {
+      if (other !== dropdown) this.toggleDropdown(other, true);
+    });
+  }
+  
+  // Toggle state
+  const shouldOpen = forceClose ? false : !isActive;
+  dropdown.classList.toggle('active', shouldOpen);
+  toggle.setAttribute('aria-expanded', shouldOpen);
+  menu.style.maxHeight = shouldOpen ? `${menu.scrollHeight}px` : '0';
+  
+  // Animasi chevron
+  const chevron = toggle.querySelector('.dropdown-indicator');
+  if (chevron) {
+    chevron.style.transform = shouldOpen ? 'rotate(180deg)' : 'rotate(0)';
+  }
+}
+
+// Perbaiki event handler di setupEventListeners:
+handleDropdownToggle(e, toggle) {
+  e.preventDefault();
+  const dropdown = toggle.closest('.dropdown');
+  this.toggleDropdown(dropdown);
+}
+
 // Inisialisasi Router
 document.addEventListener('DOMContentLoaded', () => {
   const router = new Router();
