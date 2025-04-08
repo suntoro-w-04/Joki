@@ -1,2 +1,0 @@
-# Joki
-web list joki
