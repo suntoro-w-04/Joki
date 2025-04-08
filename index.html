@@ -3,74 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Online - Produk Kami</title>
+    <title>DOBA AI - Toko Online</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo">TokoKu</div>
-        <p>Produk Berkualitas dengan Harga Terjangkau</p>
-    </header>
-    
-    <div class="container">
-        <div class="produk-grid">
-            <!-- Produk 1 -->
-            <div class="produk-card">
-                <img src="https://via.placeholder.com/300x200?text=Produk+1" alt="Produk 1" class="produk-gambar">
-                <div class="produk-info">
-                    <h3 class="produk-judul">Nama Produk 1</h3>
-                    <p class="produk-deskripsi">
-                        Deskripsi singkat produk 1. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <div class="produk-harga">Rp 250.000</div>
-                    <a href="#" class="beli-btn">Beli Sekarang</a>
-                </div>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>DOBA AI</h1>
             </div>
             
-            <!-- Produk 2 -->
-            <div class="produk-card">
-                <img src="https://via.placeholder.com/300x200?text=Produk+2" alt="Produk 2" class="produk-gambar">
-                <div class="produk-info">
-                    <h3 class="produk-judul">Nama Produk 2</h3>
-                    <p class="produk-deskripsi">
-                        Deskripsi singkat produk 2. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <div class="produk-harga">Rp 350.000</div>
-                    <a href="#" class="beli-btn">Beli Sekarang</a>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#"><i class="fas fa-box"></i> Produk</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Kontak</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="produk-container">
+                <!-- Produk 1 -->
+                <div class="produk-item">
+                    <img src="https://via.placeholder.com/300x200?text=Produk+1" alt="Produk 1">
+                    <div class="produk-info">
+                        <h3>Produk Unggulan 1</h3>
+                        <p>Deskripsi singkat produk pertama dengan kualitas terbaik.</p>
+                        <span class="harga">Rp 250.000</span>
+                    </div>
+                </div>
+
+                <!-- Produk 2 -->
+                <div class="produk-item">
+                    <img src="https://via.placeholder.com/300x200?text=Produk+2" alt="Produk 2">
+                    <div class="produk-info">
+                        <h3>Produk Unggulan 2</h3>
+                        <p>Deskripsi singkat produk kedua dengan kualitas terbaik.</p>
+                        <span class="harga">Rp 350.000</span>
+                    </div>
+                </div>
+
+                <!-- Produk 3 -->
+                <div class="produk-item">
+                    <img src="https://via.placeholder.com/300x200?text=Produk+3" alt="Produk 3">
+                    <div class="produk-info">
+                        <h3>Produk Unggulan 3</h3>
+                        <p>Deskripsi singkat produk ketiga dengan kualitas terbaik.</p>
+                        <span class="harga">Rp 450.000</span>
+                    </div>
+                </div>
+
+                <!-- Produk 4 -->
+                <div class="produk-item">
+                    <img src="https://via.placeholder.com/300x200?text=Produk+4" alt="Produk 4">
+                    <div class="produk-info">
+                        <h3>Produk Unggulan 4</h3>
+                        <p>Deskripsi singkat produk keempat dengan kualitas terbaik.</p>
+                        <span class="harga">Rp 550.000</span>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Produk 3 -->
-            <div class="produk-card">
-                <img src="https://via.placeholder.com/300x200?text=Produk+3" alt="Produk 3" class="produk-gambar">
-                <div class="produk-info">
-                    <h3 class="produk-judul">Nama Produk 3</h3>
-                    <p class="produk-deskripsi">
-                        Deskripsi singkat produk 3. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <div class="produk-harga">Rp 450.000</div>
-                    <a href="#" class="beli-btn">Beli Sekarang</a>
-                </div>
-            </div>
-            
-            <!-- Produk 4 -->
-            <div class="produk-card">
-                <img src="https://via.placeholder.com/300x200?text=Produk+4" alt="Produk 4" class="produk-gambar">
-                <div class="produk-info">
-                    <h3 class="produk-judul">Nama Produk 4</h3>
-                    <p class="produk-deskripsi">
-                        Deskripsi singkat produk 4. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <div class="produk-harga">Rp 550.000</div>
-                    <a href="#" class="beli-btn">Beli Sekarang</a>
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
-    
-    <footer>
-        <p>&copy; 2023 TokoKu. Hak Cipta Dilindungi.</p>
-        <p>Hubungi kami: email@tokoku.com | (021) 12345678</p>
-    </footer>
 </body>
 </html>
