@@ -16,13 +16,48 @@ body {
     background-color: #2c3e50;
     overflow-x: hidden;
     transition: 0.3s;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .sidenav:hover {
     width: 250px;
 }
 
+/* Logo Styles */
+.logo-container {
+    padding: 20px 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #34495e;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.logo-img {
+    width: 40px;
+    transition: 0.3s;
+}
+
+.logo-text {
+    color: #ecf0f1;
+    font-weight: bold;
+    margin-left: 15px;
+    opacity: 0;
+    white-space: nowrap;
+    transition: 0.3s;
+    font-size: 1.2em;
+}
+
+.sidenav:hover .logo-text {
+    opacity: 1;
+    margin-left: 10px;
+}
+
+.sidenav:hover .logo-img {
+    width: 50px;
+}
+
+/* Menu Items */
 .sidenav a {
     padding: 15px 25px;
     text-decoration: none;
@@ -59,12 +94,7 @@ body {
     transform: translateX(10px);
 }
 
-/* Animasi saat hover */
-.sidenav:hover a {
-    padding: 15px 30px;
-}
-
-/* Responsive untuk mobile */
+/* Responsive Design */
 @media screen and (max-width: 768px) {
     .sidenav {
         width: 60px;
@@ -81,5 +111,13 @@ body {
     
     .sidenav a i {
         font-size: 20px;
+    }
+    
+    .logo-img {
+        width: 35px;
+    }
+    
+    .sidenav:hover .logo-img {
+        width: 40px;
     }
 }
