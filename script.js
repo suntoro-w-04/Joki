@@ -95,6 +95,29 @@ class ContentLoader {
             </div>
         `;
     }
+    // Dark mode toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme');
+
+    // Set initial theme
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateButtonIcon(currentTheme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateButtonIcon(newTheme);
+    });
+
+    function updateButtonIcon(theme) {
+        const icon = theme === 'dark' ? 'fa-moon' : 'fa-sun';
+        themeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
+    }
 }
 
 // Inisialisasi saat DOM siap
