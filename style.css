@@ -74,6 +74,7 @@ body {
     opacity: 0;
     height: 30px; /* Sesuaikan tinggi */
     margin-left: 15px;
+    padding-right: 20px;
     transition: 0.3s;
     display: none; /* Sembunyikan secara default */
 }
@@ -82,11 +83,12 @@ body {
     opacity: 1;
     display: inline-block; /* Tampilkan saat hover */
     margin-left: 10px;
+    padding-right: 15px
 }
 
 /* Penyesuaian container logo */
 .logo-container {
-    padding: 15px 15px;
+    padding: 15px 10px;
     display: flex;
     align-items: center;
 }
