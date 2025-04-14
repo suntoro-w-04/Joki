@@ -69,6 +69,38 @@ body {
     margin-left: 10px;
 }
 
+/* Hapus style .logo-text sebelumnya */
+.logo-text-image {
+    opacity: 0;
+    height: 30px; /* Sesuaikan tinggi */
+    margin-left: 15px;
+    transition: 0.3s;
+    display: none; /* Sembunyikan secara default */
+}
+
+.sidenav:hover .logo-text-image {
+    opacity: 1;
+    display: inline-block; /* Tampilkan saat hover */
+    margin-left: 10px;
+}
+
+/* Penyesuaian container logo */
+.logo-container {
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .logo-text-image {
+        height: 25px;
+    }
+    
+    .sidenav:hover .logo-text-image {
+        margin-left: 5px;
+    }
+}
+
 /* ================= AREA KONTEN UTAMA ================= */
 .content-area {
     margin-left: 80px;
