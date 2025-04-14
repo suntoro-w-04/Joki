@@ -1,4 +1,4 @@
-/* Global Styles */
+/* ================= GLOBAL STYLES ================= */
 body {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Sidenav Styles */
+/* ================= NAVIGASI SAMPING ================= */
 .sidenav {
     height: 100%;
     width: 80px;
@@ -25,7 +25,7 @@ body {
     width: 250px;
 }
 
-/* Logo Section */
+/* ================= LOGO ================= */
 .logo-container {
     padding: 15px 10px;
     margin-bottom: 15px;
@@ -63,24 +63,19 @@ body {
     white-space: nowrap;
 }
 
-.sidenav:hover .logo-text {
-    opacity: 1;
-    margin-left: 10px;
-}
-
-/* Main Content Area */
-.content-container {
+/* ================= AREA KONTEN UTAMA ================= */
+.content-area {
     margin-left: 80px;
-    padding: 30px 40px;
-    transition: 0.3s;
-    min-height: calc(100vh - 60px);
+    padding: 30px;
+    min-height: 100vh;
+    transition: margin-left 0.3s;
 }
 
-.sidenav:hover ~ .content-container {
+.sidenav:hover ~ .content-area {
     margin-left: 250px;
 }
 
-/* Menu Items */
+/* ================= MENU ITEM ================= */
 .sidenav a {
     padding: 15px 25px;
     text-decoration: none;
@@ -94,6 +89,7 @@ body {
     background-color: transparent;
 }
 
+/* Ikon Menu */
 .sidenav a i {
     font-size: 24px;
     min-width: 40px;
@@ -101,6 +97,7 @@ body {
     transition: 0.3s;
 }
 
+/* Teks Menu */
 .sidenav a span {
     margin-left: 20px;
     opacity: 0;
@@ -108,23 +105,14 @@ body {
     white-space: nowrap;
 }
 
-.sidenav:hover a span {
-    opacity: 1;
-    margin-left: 15px;
-}
-
+/* Efek Hover pada Menu */
 .sidenav a:hover {
     background-color: #34495e;
     transform: translateX(10px);
     border-radius: 4px;
 }
 
-.sidenav a.active {
-    background-color: #2980b9;
-    transform: translateX(5px);
-}
-
-/* Responsive Design */
+/* ================= RESPONSIVE DESIGN ================= */
 @media screen and (max-width: 768px) {
     .sidenav {
         width: 60px;
@@ -134,15 +122,12 @@ body {
         width: 200px;
     }
     
-    .content-container {
+    .content-area {
         margin-left: 60px;
         padding: 20px;
     }
     
-    .sidenav:hover ~ .content-container {
-        margin-left: 200px;
-    }
-    
+    /* Penyesuaian Ukuran Logo di Mobile */
     .logo-img {
         width: 40px;
         height: 40px;
@@ -152,34 +137,28 @@ body {
         width: 50px;
         height: 50px;
     }
-    
-    .logo-text {
-        font-size: 1.1em;
-    }
-    
-    .sidenav a {
-        padding: 12px 20px;
-        font-size: 16px;
-    }
-    
-    .sidenav a i {
-        font-size: 20px;
-    }
 }
 
-/* Animation Enhancements */
-.sidenav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 100%;
-    height: 2px;
-    background-color: #2980b9;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+/* ================= KARTU KONTEN ================= */
+.content-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 }
 
-.sidenav a:hover::after {
-    transform: scaleX(0.2);
+/* ================= LOADING & ERROR ================= */
+.loading-indicator {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2em;
+    color: #666;
+}
+
+.error-message {
+    color: #e74c3c;
+    padding: 20px;
+    border: 1px solid #e74c3c;
+    border-radius: 5px;
+    margin: 20px;
 }

@@ -1,0 +1,46 @@
+<!-- Header -->
+<h1>Selamat Datang di GameCenter</h1>
+<p>Layanan Gaming Terpercaya</p>
+
+<!-- Fitur Utama -->
+<div class="features">
+    <div class="feature-card">
+        <i class="fas fa-bolt"></i>
+        <h3>Proses Kilat</h3>
+        <p>Transaksi cepat dalam 5 menit</p>
+    </div>
+    
+    <div class="feature-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>100% Aman</h3>
+        <p>Garansi uang kembali</p>
+    </div>
+</div>
+
+<!-- Style Khusus Halaman -->
+<style>
+.features {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-top: 30px;
+}
+
+.feature-card {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5em;
+    color: #2980b9;
+    margin-bottom: 15px;
+}
+</style>
