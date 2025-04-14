@@ -93,11 +93,11 @@ body {
 
 @media (max-width: 768px) {
     .logo-text-image {
-        height: 25px;
+        height: 20px;
     }
     
     .sidenav:hover .logo-text-image {
-        margin-left: 5px;
+        margin-left: 3px;
     }
 }
 
