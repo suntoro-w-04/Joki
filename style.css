@@ -27,13 +27,19 @@ body {
 
 /* ================= LOGO ================= */
 .logo-container {
-    padding: 15px 10px;
+    padding: 15px 0;
     margin-bottom: 15px;
     border-bottom: 1px solid #34495e;
     display: flex;
+    justify-content: center;
     align-items: center;
     transition: 0.3s;
     overflow: hidden;
+}
+
+.sidenav:hover .logo-container {
+    justify-content: flex-start;
+    padding: 15px 10px;
 }
 
 .logo-img {
@@ -63,6 +69,11 @@ body {
     white-space: nowrap;
 }
 
+.sidenav:hover .logo-text {
+    opacity: 1;
+    margin-left: 10px;
+}
+
 /* ================= AREA KONTEN UTAMA ================= */
 .content-area {
     margin-left: 80px;
@@ -77,16 +88,22 @@ body {
 
 /* ================= MENU ITEM ================= */
 .sidenav a {
-    padding: 15px 25px;
+    padding: 15px 0;
     text-decoration: none;
     font-size: 18px;
     color: #ecf0f1;
     display: flex;
+    justify-content: center;
     align-items: center;
     transition: 0.2s;
     position: relative;
     margin: 5px 0;
     background-color: transparent;
+}
+
+.sidenav:hover a {
+    padding: 15px 25px;
+    justify-content: flex-start;
 }
 
 /* Ikon Menu */
@@ -95,6 +112,11 @@ body {
     min-width: 40px;
     text-align: center;
     transition: 0.3s;
+    margin: 0 auto;
+}
+
+.sidenav:hover a i {
+    margin: 0;
 }
 
 /* Teks Menu */
@@ -127,7 +149,7 @@ body {
         padding: 20px;
     }
     
-    /* Penyesuaian Ukuran Logo di Mobile */
+    /* Penyesuaian Logo di Mobile */
     .logo-img {
         width: 40px;
         height: 40px;
@@ -136,6 +158,20 @@ body {
     .sidenav:hover .logo-img {
         width: 50px;
         height: 50px;
+    }
+    
+    /* Penyesuaian Menu di Mobile */
+    .sidenav a {
+        padding: 12px 0;
+        font-size: 16px;
+    }
+    
+    .sidenav:hover a {
+        padding: 12px 20px;
+    }
+    
+    .sidenav a i {
+        font-size: 20px;
     }
 }
 
