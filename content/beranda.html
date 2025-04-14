@@ -49,7 +49,7 @@
 .category-buttons {
     display: flex;
     justify-content: center;
-    gap: 3px; /* Mengurangi jarak antar tombol */
+    gap: 5px; /* Mengurangi jarak antar tombol */
     flex-wrap: wrap;
 }
 
@@ -60,7 +60,7 @@
     background: #2980b9;
     color: white;
     border: none;
-    border-radius: 8px; /* Sudut lebih kotak */
+    border-radius: 2px; /* Sudut lebih kotak */
     cursor: pointer;
     transition: 0.3s;
     display: flex;
@@ -101,6 +101,14 @@
     
     .category-btn i {
         font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-btn {
+        width: 90px;
+        height: 90px;
+        padding: 10px;
     }
 }
 
