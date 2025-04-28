@@ -95,6 +95,23 @@
 
         async function loadTopupData() {
             try {
+                // Check if we have cached data
+                const cachedData = localStorage.getItem('topupData');
+                const cacheTimestamp = localStorage.getItem('topupDataTimestamp');
+                
+                // Use cache if it exists and is less than 1 hour old
+                if (cachedData && cacheTimestamp) {
+                    const isRecent = (Date.now() - parseInt(cacheTimestamp)) < 3600000; // 1 hour
+                    
+                    if (isRecent) {
+                        console.log('Using cached topup data');
+                        displayTopupItems(JSON.parse(cachedData));
+                        return;
+                    }
+                }
+                
+                // If no cache or cache is old, fetch from server
+                console.log('Fetching fresh topup data');
                 const response = await fetch('data/topup.csv');
                 if (!response.ok) {
                     throw new Error('Failed to load topup data');
@@ -102,12 +119,16 @@
                 
                 const csvText = await response.text();
                 const topupItems = parseCSV(csvText);
+                
+                // Save to cache
+                localStorage.setItem('topupData', JSON.stringify(topupItems));
+                localStorage.setItem('topupDataTimestamp', Date.now().toString());
+                
                 displayTopupItems(topupItems);
             } catch (error) {
                 showError(error.message);
             }
         }
-
         function parseCSV(csvText) {
             const lines = csvText.split('\n');
             const headers = lines[0].split(',').map(header => header.trim());
