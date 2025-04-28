@@ -57,18 +57,18 @@
 .category-buttons {
     display: flex;
     justify-content: center;
-    gap: 8px; /* Mengurangi jarak antar tombol */
+    gap: 20px; /* Increased gap between buttons */
     flex-wrap: wrap;
 }
 
 .category-btn {
-    width: 250px; /* Lebar tetap */
-    height: 75px; /* Tinggi tetap */
+    width: 150px; /* Equal width and height for round appearance */
+    height: 150px; /* Equal width and height for round appearance */
     padding: 15px;
     background: #2c3e50;
     color: white;
     border: none;
-    border-radius: 8px; /* Sudut lebih kotak */
+    border-radius: 50%; /* Make buttons perfectly round */
     cursor: pointer;
     transition: 0.3s;
     display: flex;
@@ -77,21 +77,24 @@
     justify-content: center;
     gap: 12px;
     font-size: 1em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add subtle shadow */
 }
 
 .category-btn i {
-    font-size: 1.5em;
+    font-size: 2.5em; /* Larger icons */
+    margin-bottom: 8px;
 }
 
 .category-btn span {
     text-align: center;
     line-height: 1.2;
+    font-weight: bold;
 }
 
 .category-btn:hover {
     background: #1996e9;
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: scale(1.1); /* Slightly larger scale effect */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
 }
 
 .hero-banner {
@@ -146,6 +149,15 @@
     
     .banner-content p {
         font-size: 1.2em;
+    }
+    
+    .category-btn {
+        width: 120px; /* Smaller on mobile */
+        height: 120px; /* Smaller on mobile */
+    }
+    
+    .category-btn i {
+        font-size: 2em;
     }
 }
 </style>
