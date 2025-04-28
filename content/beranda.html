@@ -12,12 +12,12 @@
     <h2 class="section-title">KATEGORI PRODUK</h2>
     
     <div class="category-buttons">
-        <button class="category-btn" onclick="loadContent('joki.html')">
+        <button class="category-btn nav-link" data-content="joki.html">
             <i class="fas fa-gamepad"></i>
             <span>Joki</span>
         </button>
         
-        <button class="category-btn" onclick="loadContent('topup.html')">
+        <button class="category-btn nav-link" data-content="topup.html">
             <i class="fas fa-wallet"></i>
             <span>Topup</span>
         </button>
@@ -26,15 +26,30 @@
 
 <!-- Script untuk menangani klik pada tombol kategori -->
 <script>
-    function loadContent(contentFile) {
-        // Menggunakan ContentLoader yang sudah ada di script.js
+    // Add this at the end of beranda.html
+    console.log("ContentLoader available:", !!window.contentLoader);
+    
+    // Manual navigation function as backup
+    function manualNavigate(contentFile) {
+        console.log("Manual navigation to:", contentFile);
         if (window.contentLoader) {
             window.contentLoader.loadContent(contentFile);
         } else {
-            // Fallback jika contentLoader tidak tersedia
+            console.error("ContentLoader not available");
+            // Fallback
             location.hash = contentFile.replace('.html', '');
         }
     }
+    
+    // Add manual click handlers after the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const contentFile = this.getAttribute('data-content');
+                manualNavigate(contentFile);
+            });
+        });
+    });
 </script>
 
 <!-- Style Khusus Halaman -->
