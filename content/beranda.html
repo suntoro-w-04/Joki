@@ -12,12 +12,12 @@
     <h2 class="section-title">KATEGORI PRODUK</h2>
     
     <div class="category-buttons">
-        <button class="category-btn" data-content="joki.html">
+        <button class="category-btn" onclick="loadContent('joki.html')">
             <i class="fas fa-gamepad"></i>
             <span>Joki</span>
         </button>
         
-        <button class="category-btn" data-content="topup.html">
+        <button class="category-btn" onclick="loadContent('topup.html')">
             <i class="fas fa-wallet"></i>
             <span>Topup</span>
         </button>
@@ -26,21 +26,15 @@
 
 <!-- Script untuk menangani klik pada tombol kategori -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Tambahkan event listener untuk tombol kategori
-        document.querySelectorAll('.category-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const contentFile = this.getAttribute('data-content');
-                // Gunakan ContentLoader yang sudah ada untuk memuat konten
-                if (window.contentLoader) {
-                    window.contentLoader.loadContent(contentFile);
-                } else {
-                    // Fallback jika contentLoader tidak tersedia
-                    window.location.hash = contentFile.replace('.html', '');
-                }
-            });
-        });
-    });
+    function loadContent(contentFile) {
+        // Menggunakan ContentLoader yang sudah ada di script.js
+        if (window.contentLoader) {
+            window.contentLoader.loadContent(contentFile);
+        } else {
+            // Fallback jika contentLoader tidak tersedia
+            location.hash = contentFile.replace('.html', '');
+        }
+    }
 </script>
 
 <!-- Style Khusus Halaman -->
@@ -58,13 +52,6 @@
     color: #2c3e50;
     font-size: 2.5em;
     margin-bottom: 30px;
-}
-
-.category-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 5px; /* Mengurangi jarak antar tombol */
-    flex-wrap: wrap;
 }
 
 .category-buttons {
