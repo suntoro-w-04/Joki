@@ -24,6 +24,25 @@
     </div>
 </section>
 
+<!-- Script untuk menangani klik pada tombol kategori -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tambahkan event listener untuk tombol kategori
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const contentFile = this.getAttribute('data-content');
+                // Gunakan ContentLoader yang sudah ada untuk memuat konten
+                if (window.contentLoader) {
+                    window.contentLoader.loadContent(contentFile);
+                } else {
+                    // Fallback jika contentLoader tidak tersedia
+                    window.location.hash = contentFile.replace('.html', '');
+                }
+            });
+        });
+    });
+</script>
+
 <!-- Style Khusus Halaman -->
 <style>
 /* Style untuk section kategori produk */
